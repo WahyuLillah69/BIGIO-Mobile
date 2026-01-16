@@ -1,0 +1,29 @@
+package com.takehomechallenge.lillah
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Scaffold
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
+import com.takehomechallenge.lillah.navigation.NavGraph
+import com.takehomechallenge.lillah.ui.theme.InternAppTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+
+        setContent {
+            InternAppTheme {
+                val navController = rememberNavController()
+
+                Scaffold(modifier = Modifier.fillMaxSize()) {
+                    NavGraph(navController = navController)
+                }
+            }
+        }
+    }
+}
